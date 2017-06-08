@@ -161,11 +161,8 @@
                         toPoint:(CGPoint)toPoint image:(UIImage *)image {
     
     CGSize screenSize = self.frame.size;
-    if (UIGraphicsBeginImageContextWithOptions != NULL) {
-        UIGraphicsBeginImageContextWithOptions(screenSize, NO, 0.0);
-    } else {
-        UIGraphicsBeginImageContext(screenSize);
-    }
+    UIGraphicsBeginImageContextWithOptions(screenSize, NO, UIScreen.mainScreen.scale);
+
     CGContextRef context = UIGraphicsGetCurrentContext();
     
     [image drawInRect:CGRectMake(0, 0, screenSize.width, screenSize.height)];
@@ -190,11 +187,8 @@
     
     CGSize screenSize = self.frame.size;
     
-    if (UIGraphicsBeginImageContextWithOptions != NULL) {
-        UIGraphicsBeginImageContextWithOptions(screenSize, NO, 0.0);
-    } else {
-        UIGraphicsBeginImageContext(screenSize);
-    }
+    UIGraphicsBeginImageContextWithOptions(screenSize, NO, UIScreen.mainScreen.scale);
+
     CGContextRef context = UIGraphicsGetCurrentContext();
     
     [image drawInRect:CGRectMake(0, 0, screenSize.width, screenSize.height)];
