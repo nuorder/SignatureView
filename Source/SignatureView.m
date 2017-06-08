@@ -72,22 +72,17 @@
 
 - (void)clear {
     self.blank = YES;
-    
-    [self clearWithColor:[UIColor whiteColor]];
-    [self clearWithColor:[UIColor clearColor]];
-}
 
-- (void)clearWithColor:(UIColor *)color {
     CGSize screenSize = self.frame.size;
     
     UIGraphicsBeginImageContext(screenSize);
     
     CGContextRef context = UIGraphicsGetCurrentContext();
+
     [self.image drawInRect:CGRectMake(0, 0, screenSize.width, screenSize.height)];
-    
-    CGContextSetFillColorWithColor(context, color.CGColor);
-    CGContextFillRect(context, CGRectMake(0, 0, screenSize.width, screenSize.height));
-    
+
+    CGContextClearRect(context, CGRectMake(0, 0, screenSize.width, screenSize.height));
+
     UIImage *cleanImage = UIGraphicsGetImageFromCurrentImageContext();
     self.image = cleanImage;
     
